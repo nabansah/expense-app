@@ -1,0 +1,57 @@
+<app-home></app-home>
+<h3 class="mt-5 mb-3">Create a new Expenditure</h3>
+<form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+<div class="row mb-3">
+
+   <div class="col">
+      <label class="form-label">Spender:</label>
+      <input class="form-control" type="text" formControlName="spender">
+      <small class="text-danger"  *ngIf="expenseForm.get('spender')?.invalid && expenseForm.get('spender')?.touched">
+        spender is required.
+      </small>
+    </div>
+
+   <div class="col">
+     <label class="form-label">Amount:</label>
+     <input  class="form-control" type="number" formControlName="amount">
+     <small class="text-danger"  *ngIf="expenseForm.get('amount')?.invalid && expenseForm.get('amount')?.touched">
+       amount is required.
+     </small>
+   </div>
+</div>
+
+
+
+<div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Category:</label>
+      <input  class="form-control" type="text" formControlName="category">
+      <small class="text-danger" *ngIf="expenseForm.get('category')?.invalid && expenseForm.get('category')?.touched">
+        category is required.
+      </small>
+    </div>
+
+    <div class="col">
+      <label class="form-label">Spent On:</label>
+      <input  class="form-control" type="date" formControlName="spentOn">
+      <small class="text-danger"  *ngIf="expenseForm.get('spentOn')?.invalid && expenseForm.get('spentOn')?.touched">
+        spentOn is required.
+      </small>
+    </div>
+</div>
+
+
+
+<div class="row mb-3">
+  <div class="col">
+    <label class="form-label">Notes:</label>
+    <input  class="form-control" type="text" formControlName="notes">
+    <small class="text-danger"  *ngIf="expenseForm.get('notes')?.invalid && expenseForm.get('notes')?.touched">
+      notes is required.
+    </small>
+  </div>
+</div>
+
+
+<button class="btn btn-primary" type="submit" [disabled]="expenseForm.invalid">Submit</button>
+</form>

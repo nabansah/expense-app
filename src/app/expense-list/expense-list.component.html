@@ -1,0 +1,35 @@
+<app-home></app-home>
+
+<h3 class="mt-5 mb-3">Expenditure List</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Spender</th>
+      <th>Amount</th>
+      <th>Category</th>
+      <th>Date</th>
+      <th>Notes</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let expense of expenses">
+      <td> {{expense.spender}}</td>
+      <td>{{expense.amount}}</td>
+      <td>{{expense.category}}</td>
+      <td>{{expense.spentOn}}</td>
+      <td> {{expense.notes}} </td>
+      <td> <button class="btn btn-sm btn-danger mx-1" (click)="deleteExpense(expense.id)">Delete</button>
+        <button class="btn btn-sm btn-secondary mx-1"  [routerLink]="['/edit', expense.id]">Edit</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul *ngIf="expenses.length; else noExpense">
+
+</ul>
+
+<ng-template #noExpense>
+  <p>No Expenditure available.</p>
+</ng-template>
